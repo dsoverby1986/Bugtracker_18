@@ -33,3 +33,6 @@ packages/
 Web.config
 Web.Debug.config
 Web.Release.config
+#Data files
+*.mdf
+*.ldf
