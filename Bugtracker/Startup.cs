@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using Bugtracker.Migrations;
 
 [assembly: OwinStartupAttribute(typeof(Bugtracker.Startup))]
 namespace Bugtracker

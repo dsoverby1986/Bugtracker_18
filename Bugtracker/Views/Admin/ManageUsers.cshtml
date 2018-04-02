@@ -1,0 +1,95 @@
+﻿@model Bugtracker.Models.AdminUsersViewModel
+@{
+    ViewBag.Title = "Manage Users";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Users</h4>
+                <p class="category">User data &amp; management access</p>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Projects</th>
+                            <th>Tickets</th>
+                            <th>Roles</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var user in Model.Users)
+                        {
+                            <tr>
+                                <th>
+                                    @user.DisplayName
+                                </th>
+                                <th>
+                                    @user.Email
+                                </th>
+                                <th>
+                                    @if (user.Projects.Count != 0)
+                                    {
+                                        foreach (var project in user.Projects)
+                                        {
+                                            @Html.ActionLink(project.Name, "Details", "Project", new { id = project.Id }, null)
+                                            if(project != user.Projects.Last())
+                                            {
+                                                <br />
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>N/A</p>
+                                    }
+                                </th>
+                                <th>
+                                    @if(user.Tickets.Count != 0)
+                                    {
+                                        foreach(var ticket in user.Tickets)
+                                        {
+                                            @Html.ActionLink(ticket.Title, "Details", "Ticket", new { id = ticket.Id}, null)
+                                            if(ticket != user.Tickets.Last())
+                                            {
+                                                <br />
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>N/A</p>
+                                    }
+                                </th>
+                                <th>
+                                    @if(user.Roles.Count != 0)
+                                    {
+                                        foreach(var role in user.Roles)
+                                        {
+                                            @Model.RolesDictionary[role.RoleId]
+                                            if(role != user.Roles.Last())
+                                            {
+                                                <br />
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>N/A</p>
+                                    }
+                                </th>
+                                <th>
+                                    <a href="@(Url.Action("Details", "User"))" title="Details"><i class="fa fa-fw fa-eye"></i></a>
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

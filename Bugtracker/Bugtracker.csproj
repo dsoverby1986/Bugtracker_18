@@ -190,21 +190,84 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Extensions\TicketExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ModelHelpers.cs" />
+    <Compile Include="Helpers\UserHelpers.cs" />
+    <Compile Include="Infrastructure\AppRoles.cs" />
+    <Compile Include="Migrations\201803311708406_initial.cs" />
+    <Compile Include="Migrations\201803311708406_initial.Designer.cs">
+      <DependentUpon>201803311708406_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803311907591_updates.cs" />
+    <Compile Include="Migrations\201803311907591_updates.Designer.cs">
+      <DependentUpon>201803311907591_updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804011858342_ticket_add_description_property.cs" />
+    <Compile Include="Migrations\201804011858342_ticket_add_description_property.Designer.cs">
+      <DependentUpon>201804011858342_ticket_add_description_property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804012318301_ticket_applied_required_to_necessary_fields.cs" />
+    <Compile Include="Migrations\201804012318301_ticket_applied_required_to_necessary_fields.Designer.cs">
+      <DependentUpon>201804012318301_ticket_applied_required_to_necessary_fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804020115572_appuser_remove_nav_prop_tickethistories___tickethistory_apply_required_attribute_to_necessary_fields.cs" />
+    <Compile Include="Migrations\201804020115572_appuser_remove_nav_prop_tickethistories___tickethistory_apply_required_attribute_to_necessary_fields.Designer.cs">
+      <DependentUpon>201804020115572_appuser_remove_nav_prop_tickethistories___tickethistory_apply_required_attribute_to_necessary_fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminUsersViewModel.cs" />
+    <Compile Include="Models\TicketViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\TicketAttachment.cs" />
+    <Compile Include="Models\TicketComment.cs" />
+    <Compile Include="Models\TicketHistory.cs" />
+    <Compile Include="Models\TicketNotification.cs" />
+    <Compile Include="Models\TicketPriority.cs" />
+    <Compile Include="Models\TicketStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\demo.css" />
+    <Content Include="assets\css\material-dashboard.css" />
+    <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\cover.jpeg" />
+    <Content Include="assets\img\faces\marc.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\mask.png" />
+    <Content Include="assets\img\new_logo.png" />
+    <Content Include="assets\img\sidebar-1.jpg" />
+    <Content Include="assets\img\sidebar-2.jpg" />
+    <Content Include="assets\img\sidebar-3.jpg" />
+    <Content Include="assets\img\sidebar-4.jpg" />
+    <Content Include="assets\img\tim_80x80.png" />
+    <Content Include="assets\js\arrive.min.js" />
+    <Content Include="assets\js\bootstrap-notify.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\chartist.min.js" />
+    <Content Include="assets\js\demo.js" />
+    <Content Include="assets\js\jquery-3.2.1.min.js" />
+    <Content Include="assets\js\material-dashboard.js" />
+    <Content Include="assets\js\material.min.js" />
+    <Content Include="assets\js\perfect-scrollbar.jquery.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -213,6 +276,44 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="assets\sass\material-dashboard.scss" />
+    <Content Include="assets\sass\md\mixins\_chartist.scss" />
+    <Content Include="assets\sass\md\mixins\_transparency.scss" />
+    <Content Include="assets\sass\md\mixins\_vendor-prefixes.scss" />
+    <Content Include="assets\sass\md\plugins\_animate.scss" />
+    <Content Include="assets\sass\md\plugins\_perfect-scrollbar.scss" />
+    <Content Include="assets\sass\md\plugins\_plugin-nouislider.scss" />
+    <Content Include="assets\sass\md\_alerts.scss" />
+    <Content Include="assets\sass\md\_buttons.scss" />
+    <Content Include="assets\sass\md\_cards.scss" />
+    <Content Include="assets\sass\md\_chartist.scss" />
+    <Content Include="assets\sass\md\_checkboxes.scss" />
+    <Content Include="assets\sass\md\_colors.scss" />
+    <Content Include="assets\sass\md\_dialogs.scss" />
+    <Content Include="assets\sass\md\_dropdown.scss" />
+    <Content Include="assets\sass\md\_footers.scss" />
+    <Content Include="assets\sass\md\_forms.scss" />
+    <Content Include="assets\sass\md\_inputs-size.scss" />
+    <Content Include="assets\sass\md\_inputs.scss" />
+    <Content Include="assets\sass\md\_misc.scss" />
+    <Content Include="assets\sass\md\_mixins.scss" />
+    <Content Include="assets\sass\md\_navbars.scss" />
+    <Content Include="assets\sass\md\_pagination.scss" />
+    <Content Include="assets\sass\md\_pills.scss" />
+    <Content Include="assets\sass\md\_popups.scss" />
+    <Content Include="assets\sass\md\_radios.scss" />
+    <Content Include="assets\sass\md\_responsive.scss" />
+    <Content Include="assets\sass\md\_ripples.scss" />
+    <Content Include="assets\sass\md\_shadows.scss" />
+    <Content Include="assets\sass\md\_sidebar-and-main-panel.scss" />
+    <Content Include="assets\sass\md\_tables.scss" />
+    <Content Include="assets\sass\md\_tabs.scss" />
+    <Content Include="assets\sass\md\_togglebutton.scss" />
+    <Content Include="assets\sass\md\_typography.scss" />
+    <Content Include="assets\sass\md\_variables.scss" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -235,9 +336,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Dashboard\About.cshtml" />
+    <Content Include="Views\Dashboard\Contact.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -258,6 +359,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Ticket\Delete.cshtml" />
+    <Content Include="Views\Ticket\Details.cshtml" />
+    <Content Include="Views\Ticket\Edit.cshtml" />
+    <Content Include="Views\Ticket\Index.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Project\Delete.cshtml" />
+    <Content Include="Views\Project\Details.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Admin\ManageUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +386,23 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803311708406_initial.resx">
+      <DependentUpon>201803311708406_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803311907591_updates.resx">
+      <DependentUpon>201803311907591_updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804011858342_ticket_add_description_property.resx">
+      <DependentUpon>201804011858342_ticket_add_description_property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804012318301_ticket_applied_required_to_necessary_fields.resx">
+      <DependentUpon>201804012318301_ticket_applied_required_to_necessary_fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804020115572_appuser_remove_nav_prop_tickethistories___tickethistory_apply_required_attribute_to_necessary_fields.resx">
+      <DependentUpon>201804020115572_appuser_remove_nav_prop_tickethistories___tickethistory_apply_required_attribute_to_necessary_fields.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
